@@ -88,8 +88,21 @@ export STANFORD_PARSER="/your/path/to/stanford-parser-full-2017-06-09"
 export STANFORD_POS="/your/path/to/stanford-postagger-full-2017-06-09"
 ```
 
-The following script will then convert dependencies, tag, and reformat the data:
+The following script will then convert dependencies, tag, and reformat the data. This will create a new file in the
+`$CONLL05` directory with the same name as the input and suffix `.parse.sdeps.combined`. 
+If `$CONLL05` is not set, you should set it to the `conll05st-release` directory.
 ```bash
-./bin/preprocess_conll05_sdeps.sh
+./bin/preprocess_conll05_sdeps.sh $CONLL05/train-set.gz
+./bin/preprocess_conll05_sdeps.sh $CONLL05/dev-set.gz
+./bin/preprocess_conll05_sdeps.sh $CONLL05/test.wsj.gz
+./bin/preprocess_conll05_sdeps.sh $CONLL05/test.brown.gz
 ```
 
+Now all that remains is to convert fields to BIO format. The following script will create a new file
+in the same directory as the old file with the suffix `.bio`:
+```bash
+./bin/convert-bio.sh $CONLL05/train-set.gz.parse.sdeps.combined
+./bin/convert-bio.sh $CONLL05/dev-set.gz.parse.sdeps.combined
+./bin/convert-bio.sh $CONLL05/test.wsj.gz.parse.sdeps.combined
+./bin/convert-bio.sh $CONLL05/test.brown.gz.parse.sdeps.combined
+```
