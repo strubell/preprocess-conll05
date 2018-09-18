@@ -20,7 +20,7 @@ foreach s ( $SECTIONS )
     # zcat $CONLL05/devel/synt.cha/devel.$s.synt.cha.gz > /tmp/$$.synt
 
     # Use gold syntax
-    zcat $CONLL05/$FILE/synt/$FILE.$s.synt.wsj.gz > /tmp/$$.synt
+    zcat $CONLL05/$FILE/synt/$FILE.$s.synt.gz > /tmp/$$.synt
 
     # no senses, set to null
     zcat $CONLL05/$FILE/null/$FILE.null.gz > /tmp/$$.senses
