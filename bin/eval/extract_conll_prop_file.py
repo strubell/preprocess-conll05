@@ -6,7 +6,7 @@ arg_parser = argparse.ArgumentParser(description='Convert a CoNLL-2012 file to C
 arg_parser.add_argument('--input_file', type=str, help='File to process')
 arg_parser.add_argument('--word_field', type=int, help='Field containing words')
 arg_parser.add_argument('--pred_field', type=int, help='Field containing predicates')
-arg_parser.add_argument('--pred_field_offset', type=int, help='Offset for predicates field', default=1)
+# arg_parser.add_argument('--pred_field_offset', type=int, help='Offset for predicates field', default=1)
 arg_parser.add_argument('--take_last', dest='take_last', action='store_true')
 arg_parser.add_argument('--no_take_last', dest='take_last', action='store_false')
 arg_parser.set_defaults(take_last=False)
@@ -28,7 +28,7 @@ with gzip.open(args.input_file, 'r') if args.input_file.endswith('gz') else open
       if args.domain == '-' or domain == args.domain:
         print_newline = True
         props = split_line[args.first_prop_field:] if args.take_last else split_line[args.first_prop_field:-1]
-        word = split_line[args.word_field] if split_line[args.pred_field + args.pred_field_offset] != '-' else '-'
+        word = split_line[args.word_field] if split_line[args.pred_field] != '-' else '-'
         new_fields = [word] + props
         new_line = '\t'.join(new_fields)
         print(new_line)
