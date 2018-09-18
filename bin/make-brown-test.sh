@@ -10,21 +10,15 @@ foreach s ( $SECTIONS )
 
     echo Processing section $s
 
-    zcat $CONLL05/test.$s/words/test.$s.words.gz > /tmp/$$.words
-    zcat $CONLL05/test.$s/props/test.$s.props.gz > /tmp/$$.props
-
-    ## Choose syntax
-    # zcat devel/synt.col2/devel.$s.synt.col2.gz > /tmp/$$.synt
-    # zcat devel/synt.col2h/devel.$s.synt.col2h.gz > /tmp/$$.synt
-    # zcat devel/synt.upc/devel.$s.synt.upc.gz > /tmp/$$.synt
-    # zcat devel/synt.cha/devel.$s.synt.cha.gz > /tmp/$$.synt
+    zcat $CONLL05/test.$s/words/$FILE.words.gz > /tmp/$$.words
+    zcat $CONLL05/test.$s/props/$FILE.props.gz > /tmp/$$.props
 
     # Use gold syntax
-    zcat $CONLL05/test.$s/synt/test.$s.synt.gz > /tmp/$$.synt
+    zcat $CONLL05/$FILE/synt/$FILE.synt.gz > /tmp/$$.synt
 
     # no senses, set to null
-    zcat $CONLL05/test.$s/null/test.$s.null.gz > /tmp/$$.senses
-    zcat $CONLL05/test.$s/ne/test.$s.ne.gz > /tmp/$$.ne
+    zcat $CONLL05/$FILE/null/$FILE.null.gz > /tmp/$$.senses
+    zcat $CONLL05/$FILE/ne/$FILE.ne.gz > /tmp/$$.ne
 
     paste -d ' ' /tmp/$$.words /tmp/$$.synt /tmp/$$.ne /tmp/$$.senses /tmp/$$.props | gzip> /tmp/$$.section.$s.gz
 end
