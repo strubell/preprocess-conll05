@@ -12,14 +12,6 @@ foreach s ( $SECTIONS )
 
     zcat $CONLL05/$FILE/words/$FILE.words.gz > /tmp/$$.words
     zcat $CONLL05/$FILE/props/$FILE.props.gz > /tmp/$$.props
-
-    ## Choose syntax
-    # zcat $CONLL05/devel/synt.col2/devel.$s.synt.col2.gz > /tmp/$$.synt
-    # zcat $CONLL05/devel/synt.col2h/devel.$s.synt.col2h.gz > /tmp/$$.synt
-    # zcat $CONLL05/devel/synt.upc/devel.$s.synt.upc.gz > /tmp/$$.synt
-    # zcat $CONLL05/devel/synt.cha/devel.$s.synt.cha.gz > /tmp/$$.synt
-
-    # Use gold syntax
     zcat $CONLL05/$FILE/synt/$FILE.$s.synt.gz > /tmp/$$.synt
 
     # no senses, set to null
