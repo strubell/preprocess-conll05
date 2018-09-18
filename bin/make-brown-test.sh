@@ -19,8 +19,8 @@ foreach s ( $SECTIONS )
     # zcat devel/synt.upc/devel.$s.synt.upc.gz > /tmp/$$.synt
     # zcat devel/synt.cha/devel.$s.synt.cha.gz > /tmp/$$.synt
 
-    # no gold parse, set to auto 
-    zcat $CONLL05/test.$s/synt.cha/test.$s.synt.cha.gz > /tmp/$$.synt
+    # Use gold syntax
+    zcat $CONLL05/test.$s/synt/test.$s.synt.gz > /tmp/$$.synt
 
     # no senses, set to null
     zcat $CONLL05/test.$s/null/test.$s.null.gz > /tmp/$$.senses

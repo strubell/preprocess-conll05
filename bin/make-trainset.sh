@@ -14,26 +14,26 @@ foreach s ( $SECTIONS )
 
     echo Processing section $s
 
-    zcat train/words/train.$s.words.gz > /tmp/$$.words
-    zcat train/props/train.$s.props.gz > /tmp/$$.props
+    zcat $CONLL05/train/words/train.$s.words.gz > /tmp/$$.words
+    zcat $CONLL05/train/props/train.$s.props.gz > /tmp/$$.props
 
     ## Choose syntax
-    # zcat train/synt.col2/train.$s.synt.col2.gz > /tmp/$$.synt
-    # zcat train/synt.col2h/train.$s.synt.col2h.gz > /tmp/$$.synt
-    # zcat train/synt.upc/train.$s.synt.upc.gz > /tmp/$$.synt
-    # zcat train/synt.cha/train.$s.synt.cha.gz > /tmp/$$.synt
+    # zcat $CONLL05/train/synt.col2/train.$s.synt.col2.gz > /tmp/$$.synt
+    # zcat $CONLL05/train/synt.col2h/train.$s.synt.col2h.gz > /tmp/$$.synt
+    # zcat $CONLL05/train/synt.upc/train.$s.synt.upc.gz > /tmp/$$.synt
+    # zcat $CONLL05/train/synt.cha/train.$s.synt.cha.gz > /tmp/$$.synt
     
     # use gold syntax
-    zcat train/synt/train.$s.synt.wsj.gz > /tmp/$$.synt
+    zcat $CONLL05/train/synt/train.$s.synt.wsj.gz > /tmp/$$.synt
 
-    zcat train/senses/train.$s.senses.gz > /tmp/$$.senses
-    zcat train/ne/train.$s.ne.gz > /tmp/$$.ne
+    zcat $CONLL05/train/senses/train.$s.senses.gz > /tmp/$$.senses
+    zcat $CONLL05/train/ne/train.$s.ne.gz > /tmp/$$.ne
 
     paste -d ' ' /tmp/$$.words /tmp/$$.synt /tmp/$$.ne /tmp/$$.senses /tmp/$$.props | gzip > /tmp/$$.section.$s.gz
 end
 
-echo Generating gzipped file $FILE.gz
-zcat /tmp/$$.section* | gzip -c > $FILE.gz
+echo Generating gzipped file $CONLL05/$FILE.gz
+zcat /tmp/$$.section* | gzip -c > $CONLL05/$FILE.gz
 
 echo Cleaning files
 rm -f /tmp/$$*
