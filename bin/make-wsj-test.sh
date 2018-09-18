@@ -23,8 +23,8 @@ foreach s ( $SECTIONS )
     zcat $CONLL05/$FILE/synt/$FILE.$s.synt.wsj.gz > /tmp/$$.synt
 
     # no senses, set to null
-    zcat $CONLL05/$FILE.$s/null/$FILE.$s.null.gz > /tmp/$$.senses
-    zcat $CONLL05/$FILE.$s/ne/$FILE.$s.ne.gz > /tmp/$$.ne
+    zcat $CONLL05/$FILE/null/$FILE.null.gz > /tmp/$$.senses
+    zcat $CONLL05/$FILE/ne/$FILE.ne.gz > /tmp/$$.ne
 
     paste -d ' ' /tmp/$$.words /tmp/$$.synt /tmp/$$.ne /tmp/$$.senses /tmp/$$.props | gzip> /tmp/$$.section.$s.gz
 end

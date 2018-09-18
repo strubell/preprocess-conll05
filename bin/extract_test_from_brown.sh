@@ -12,11 +12,11 @@ if [ -e $CONLL05/test.brown/synt/test.brown.synt.gz ]; then
     rm $CONLL05/test.brown/synt/test.brown.synt.gz
 fi
 
-if [ -e $CONLL05/test.brown/words/test.brown.words.gz ]; then
-    rm $CONLL05/test.brown/words/test.brown.words.gz
-fi
+#if [ -e $CONLL05/test.brown/words/test.brown.words.gz ]; then
+#    rm $CONLL05/test.brown/words/test.brown.words.gz
+#fi
 
 for section in $SECTIONS; do
     cat $BROWN/CK/CK$section.MRG | awk '{if($1 !~ "*x*") print}' | $SRLCONLL/bin/wsj-removetraces.pl | $SRLCONLL/bin/wsj-to-se.pl -w 0 -p 1 | gzip >> $CONLL05/test.brown/synt/test.brown.synt.gz
-    cat $BROWN/CK/CK$section.MRG | awk '{if($1 !~ "*x*") print}' | $SRLCONLL/bin/wsj-removetraces.pl | $SRLCONLL/bin/wsj-to-se.pl -w 1 | awk '{print $1}' | gzip >> $CONLL05/test.brown/words/test.brown.words.gz
+#    cat $BROWN/CK/CK$section.MRG | awk '{if($1 !~ "*x*") print}' | $SRLCONLL/bin/wsj-removetraces.pl | $SRLCONLL/bin/wsj-to-se.pl -w 1 | awk '{print $1}' | gzip >> $CONLL05/test.brown/words/test.brown.words.gz
 done
