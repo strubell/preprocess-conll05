@@ -112,8 +112,15 @@ in the same directory as the old file with the suffix `.bio`:
 ./bin/convert-bio.sh $CONLL05/test.brown.gz.parse.sdeps.combined
 ```
 
+## Pre-processing for evaluation scripts
+
 To evaluate using the CoNLL `eval.pl` and `srl-eval.pl` scripts, you'll need files in a different
 format to evaluate against. To generate files for parse evaluation (`eval.pl`), use the following script:
 ```bash
-python3 bin/eval/extract_conll_parse_file.py 
+python3 bin/eval/extract_conll_parse_file.py --input_file $CONLL05/dev-set.gz.parse.sdeps.combined --id_field 2 --word_field 3 --pos_field 4 --head_field 6 --label_field 7 > $CONLL05/conll2005-dev-gold-parse.txt
+```
+
+For SRL evaluation, use the following: 
+```bash
+python3 bin/eval/extract_conll_prop_file.py --input_file $CONLL05/dev-set.gz.parse.sdeps.combined --take_last --word_field 3 --pred_field 10 --first_prop_field 14 > $CONLL05/conll2005-dev-gold-props.txt
 ```
