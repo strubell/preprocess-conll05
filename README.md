@@ -57,13 +57,13 @@ converts the constituency parses to Stanford dependencies (v3.5), assigns automa
 tags from the Stanford left3words tagger, and converts SRL spans to BIO format. The output will look like:
 
 ```
-conll05 0       0       The     DT      DT      2       det     _       -       -       -       -       O       B-A1
-conll05 0       1       economy NN      NN      4       poss    _       -       -       -       -       O       I-A1
-conll05 0       2       's      POS     POS     2       possessive      _       -       -       -       -       O       I-A1
-conll05 0       3       temperature     NN      NN      7       nsubjpass       _       -       -       -       -       O       I-A1
-conll05 0       4       will    MD      MD      7       aux     _       -       -       -       -       O       B-AM-MOD
-conll05 0       5       be      VB      VB      7       auxpass _       -       -       -       -       O       O
-conll05 0       6       taken   VBN     VBN     0       root    _       01      take    -       -       O       B-V
+conll05 0       0       The         DT      DT      2       det         _       -       -       -       -       O       B-A1
+conll05 0       1       economy     NN      NN      4       poss        _       -       -       -       -       O       I-A1
+conll05 0       2       's          POS     POS     2       possessive  _       -       -       -       -       O       I-A1
+conll05 0       3       temperature NN      NN      7       nsubjpass   _       -       -       -       -       O       I-A1
+conll05 0       4       will        MD      MD      7       aux         _       -       -       -       -       O       B-AM-MOD
+conll05 0       5       be          VB      VB      7       auxpass     _       -       -       -       -       O       O
+conll05 0       6       taken       VBN     VBN     0       root        _       01      take    -       -       O       B-V
 ```
 
 - Field 1: domain placeholder
