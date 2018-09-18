@@ -4,6 +4,7 @@
 # dev sections
 SECTIONS="01 02 03"
 
+mkdir -p $CONLL05/test.brown/words
 mkdir -p $CONLL05/test.brown/synt
 
 # Remove output file if it exists, since we're appending
