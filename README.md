@@ -1,9 +1,14 @@
 # preprocess-conll05
 Scripts for preprocessing the CoNLL-2005 SRL dataset.
 
+### Requirements:
+- Python 3
+- Bash
+- A copy of the [Penn TreeBank](https://catalog.ldc.upenn.edu/ldc99t42)
+
 ## Basic CoNLL-2005 pre-processing 
 These pre-processing steps download the CoNLL-2005 data and gather gold part-of-speech 
-and parse info from your copies of the PTB and Brown corpora. The output will look like:
+and parse info from your copy of the PTB. The output will look like:
 ```
 The         DT    (S(NP-SBJ-1(NP*  *    -   -      (A1*      
 economy     NN    *                *    -   -      *      
@@ -105,4 +110,10 @@ in the same directory as the old file with the suffix `.bio`:
 ./bin/convert-bio.sh $CONLL05/dev-set.gz.parse.sdeps.combined
 ./bin/convert-bio.sh $CONLL05/test.wsj.gz.parse.sdeps.combined
 ./bin/convert-bio.sh $CONLL05/test.brown.gz.parse.sdeps.combined
+```
+
+To evaluate using the CoNLL `eval.pl` and `srl-eval.pl` scripts, you'll need files in a different
+format to evaluate against. To generate files for parse evaluation (`eval.pl`), use the following script:
+```bash
+python3 bin/eval/extract_conll_parse_file.py 
 ```
