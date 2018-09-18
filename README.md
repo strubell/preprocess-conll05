@@ -30,23 +30,23 @@ export BROWN="/your/path/to/brown"
 
 Download CoNLL-2005 data and scripts:
 ```bash
-./bin/get_data.sh
+./bin/basic/get_data.sh
 ```
 
 Extract pos/parse info from gold data:
 ```bash
-./bin/extract_train_from_ptb.sh
-./bin/extract_dev_from_ptb.sh
-./bin/extract_test_from_ptb.sh
-./bin/extract_test_from_brown.sh
+./bin/basic/extract_train_from_ptb.sh
+./bin/basic/extract_dev_from_ptb.sh
+./bin/basic/extract_test_from_ptb.sh
+./bin/basic/extract_test_from_brown.sh
 ```
 
 Format into combined output files:
 ```bash
-./bin/make-trainset.sh
-./bin/make-devset.sh 
-./bin/make-wsj-test.sh
-./bin/make-brown-test.sh 
+./bin/basic/make-trainset.sh
+./bin/basic/make-devset.sh 
+./bin/basic/make-wsj-test.sh
+./bin/basic/make-brown-test.sh 
 ```
 
 ## Further pre-processing (e.g. for [LISA](https://github.com/strubell/LISA))
@@ -82,4 +82,14 @@ conll05 0       6       taken       VBN     VBN     0       root        _       
 - Field 14: NER placeholder
 - Field 15+: for each predicate, a column representing the labeled arguments of the predicate.
 
+First, set up paths to Stanford parser and part-of-speech tagger:
+```bash
+export STANFORD_PARSER="/your/path/to/stanford-parser-full-2017-06-09"
+export STANFORD_POS="/your/path/to/stanford-postagger-full-2017-06-09"
+```
+
+The following script will then convert dependencies, tag, and reformat the data:
+```bash
+./bin/preprocess_conll05_sdeps.sh
+```
 
