@@ -10,8 +10,8 @@ foreach s ( $SECTIONS )
 
     echo Processing section $s
 
-    zcat $CONLL05/$FILE/words/$FILE.$s.words.gz > /tmp/$$.words
-    zcat $CONLL05/$FILE/props/$FILE.$s.props.gz > /tmp/$$.props
+    zcat $CONLL05/$FILE/words/$FILE.words.gz > /tmp/$$.words
+    zcat $CONLL05/$FILE/props/$FILE.props.gz > /tmp/$$.props
 
     ## Choose syntax
     # zcat $CONLL05/devel/synt.col2/devel.$s.synt.col2.gz > /tmp/$$.synt
