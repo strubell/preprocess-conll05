@@ -40,7 +40,7 @@ with open(args.in_file_name, 'r') as in_f:
         else:
             current_sentence.append(line)
 
-for label_a, transitions in label_counts.iteritems():
-    total_count = float(sum([count for label, count in transitions.iteritems()]))
-    for label_b, count in transitions.iteritems():
+for label_a, transitions in label_counts.items():
+    total_count = float(sum([count for label, count in transitions.items()]))
+    for label_b, count in transitions.items():
         print('%s\t%s\t%g' % (label_a, label_b, (count/total_count)))

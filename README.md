@@ -112,6 +112,12 @@ in the same directory as the old file with the suffix `.bio`:
 ./bin/convert-bio.sh $CONLL05/test.brown.gz.parse.sdeps.combined
 ```
 
+You may also want to generate a matrix of transition probabilities for performing Viterbi inference at test time. You
+can use the following to do so:
+```bash
+python3 bin/compute_transition_probs.py --in_file_name $CONLL05/train-set.gz.parse.sdeps.combined.bio > $CONLL05/transition_probs.tsv
+```
+
 ## Pre-processing for evaluation scripts
 
 To evaluate using the CoNLL `eval.pl` and `srl-eval.pl` scripts, you'll need files in a different

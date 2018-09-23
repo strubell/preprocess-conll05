@@ -1,4 +1,3 @@
-from __future__ import print_function
 import argparse
 
 arg_parser = argparse.ArgumentParser(description='Convert a field in CoNLL-2012 to BIO/BILOU format')
@@ -18,7 +17,6 @@ join_str = '/'
 with open(args.input_file, 'r') as f:
   label_stack = []
   for line_num, line in enumerate(f):
-  # for line_num, line in enumerate(lines):
     new_labels = []
     split_line = line.strip().split()
     last_field = len(split_line) - (0 if args.take_last else 1)
@@ -26,7 +24,7 @@ with open(args.input_file, 'r') as f:
       assert not label_stack, "There remains an unclosed paren (line %d) labels: %s" % (line_num, ','.join(label_stack))
     elif args.field < last_field:
       field = split_line[args.field]
-      output_labels = map(lambda s: "I-" + s, label_stack)
+      output_labels = list(map(lambda s: "I-" + s, label_stack))
       if field == "*" and not label_stack:
         output_labels.append("O")
       else:
