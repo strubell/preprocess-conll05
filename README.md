@@ -4,7 +4,7 @@ Scripts for preprocessing the CoNLL-2005 SRL dataset.
 ### Requirements:
 - Python 3
 - Bash
-- A copy of the [Penn TreeBank](https://catalog.ldc.upenn.edu/ldc99t42)
+- A copy of the [Penn TreeBank](https://catalog.ldc.upenn.edu/LDC99T42)
 
 ## Basic CoNLL-2005 pre-processing 
 These pre-processing steps download the CoNLL-2005 data and gather gold part-of-speech 
